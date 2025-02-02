@@ -36,7 +36,7 @@ export default function RegisterForm() {
         display: 'flex',
         flexDirection: 'column',
         gap: '15px',
-        textAlign: 'center' as 'center', // Type assertion to ensure it works as expected
+        textAlign: 'center',
     };
 
     const inputStyle: React.CSSProperties = {
@@ -57,11 +57,6 @@ export default function RegisterForm() {
         fontSize: '16px',
         fontWeight: 'bold',
         transition: 'background-color 0.3s ease',
-    };
-
-    const buttonHoverStyle: React.CSSProperties = {
-        ...buttonStyle,
-        backgroundColor: '#005bb5',
     };
 
     const messageStyle: React.CSSProperties = {
@@ -92,8 +87,8 @@ export default function RegisterForm() {
             <button
                 type="submit"
                 style={buttonStyle}
-                onMouseOver={(e) => (e.target.style.backgroundColor = '#005bb5')}
-                onMouseOut={(e) => (e.target.style.backgroundColor = '#0070f3')}
+                onMouseOver={(e: any) => (e.target.style.backgroundColor = '#005bb5')}
+                onMouseOut={(e: any) => (e.target.style.backgroundColor = '#0070f3')}
             >
                 Register
             </button>

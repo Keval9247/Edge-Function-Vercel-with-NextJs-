@@ -78,7 +78,7 @@ export default function ProtectedPage() {
                 <section style={styles.card}>
                     <h2 style={styles.cardTitle}>Next Steps</h2>
                     <ul style={styles.list}>
-                        <li>Explore the platform's features.</li>
+                        <li>Explore the platform&apos;s features.</li>
                         <li>Update your profile information.</li>
                         <li>Check out the latest updates.</li>
                     </ul>

@@ -1,37 +1,25 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
 
 export default function EdgeFunctionPage() {
   const navigate = useRouter();
+  const [isHovered, setIsHovered] = useState(false);
+  console.log("🚀🚀 Your selected text is => isHovered: ", isHovered);
 
   const containerStyle: React.CSSProperties = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    justifyContent: "center", // Fixed the value to "center"
+    justifyContent: "center",
     minHeight: "100vh",
     backgroundColor: "#f4f7fc",
-    paddingTop: "20px", // To ensure content isn't hidden behind fixed header
+    // paddingTop: "20px",
     fontFamily: "'Roboto', sans-serif",
   };
 
-  const headerStyle: React.CSSProperties = {
-    width: "100%",
-    display: "flex",
-    justifyContent: "space-between", // Proper alignment for the header
-    alignItems: "center",
-    padding: "20px 40px",
-    position: "fixed",
-    top: "0",
-    backgroundColor: "rgba(255, 255, 255, 0.8)", // Transparent white background
-    backdropFilter: "blur(10px)", // Adding blur effect
-    boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-    zIndex: "1000",
-    transition: "background-color 0.3s ease",
-  };
-
   const buttonContainerStyle: React.CSSProperties = {
-    marginTop: "120px", // To ensure the buttons don't overlap the header
+    marginTop: "120px",
     textAlign: "center",
   };
 
@@ -42,10 +30,10 @@ export default function EdgeFunctionPage() {
     fontSize: "16px",
     fontWeight: "600",
     color: "#ffffff",
-    backgroundColor: "#007bff",
-    cursor: "pointer",
+    backgroundColor: isHovered ? "#0056b3" : "#007bff",
     margin: "10px",
     transition: "background-color 0.3s ease",
+    cursor: isHovered ? "not-allowed" : "pointer",
   };
 
   const buttonHoverStyle: React.CSSProperties = {
@@ -60,7 +48,7 @@ export default function EdgeFunctionPage() {
     maxWidth: "900px",
     borderRadius: "12px",
     boxShadow: "0 6px 20px rgba(0, 0, 0, 0.1)",
-    marginTop: "40px", // Adjusted to ensure content isn't hidden behind buttons
+    marginTop: "40px",
   };
 
   const titleStyle: React.CSSProperties = {
@@ -115,6 +103,11 @@ export default function EdgeFunctionPage() {
     width: "40%",
     marginTop: "15px",
     fontFamily: "monospace",
+    padding: "10px",
+    borderRadius: "8px",
+    backgroundColor: "#eeeeee",
+    boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+    border: "1px solid #cccccc",
   };
 
   return (
@@ -124,20 +117,23 @@ export default function EdgeFunctionPage() {
       <div style={buttonContainerStyle}>
         <button
           style={buttonStyle}
-          onMouseOver={(e) => (e.target.style.backgroundColor = buttonHoverStyle.backgroundColor)}
-          onMouseOut={(e) => (e.target.style.backgroundColor = "#007bff")}
+          onMouseOver={(e) => ((e.target as HTMLButtonElement | any).style.backgroundColor = buttonHoverStyle.backgroundColor)}
+          onMouseOut={(e) => ((e.target as HTMLButtonElement).style.backgroundColor = "#007bff")}
           onClick={() => navigate.push("/login")}
         >
           Login
         </button>
+
         <button
-          style={buttonStyle}
-          onMouseOver={(e) => (e.target.style.backgroundColor = buttonHoverStyle.backgroundColor)}
-          onMouseOut={(e) => (e.target.style.backgroundColor = "#007bff")}
+          style={{ ...buttonStyle, cursor: "default" }} // Added custom cursor style for disabled button
+          onMouseOver={(e) => ((e.target as HTMLButtonElement | any).style.backgroundColor = buttonHoverStyle.backgroundColor)}
+          onMouseOut={(e) => ((e.target as HTMLButtonElement).style.backgroundColor = "#007bff")}
           onClick={() => navigate.push("/register")}
+          disabled
         >
           Signup
         </button>
+
       </div>
       <div style={messegeContent}>
         <p>
