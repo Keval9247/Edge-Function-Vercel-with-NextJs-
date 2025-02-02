@@ -37,8 +37,8 @@ This project demonstrates how to build **user authentication** (login and signup
 #### Clone the repository:
 
  ```bash
- git clone https://github.com/Keval9247/Edge-Function-with-Vercel.git
-cd Edge-Function-with-Vercel
+ git clone https://github.com/Keval9247/Edge-Function-Vercel-with-NextJs-.git
+cd Edge-Function-Vercel-with-NextJs-
 ```
 
 #### Install dependencies:
